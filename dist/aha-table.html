@@ -198,7 +198,7 @@
 										<select
 											on-change="search">
 												<template is="dom-repeat" items="{{column.options}}" as="option">
-													<option value$="{{option.value}}">{{option.label}}</option>
+													<option value="{{option.value}}">{{option.label}}</option>
 												</template>
 										</select>
 									</template>
@@ -277,25 +277,25 @@
 										<input type="text"
 											required$="{{column.required}}"
 											on-blur="save"
-											value$="{{getValue(row,column.name)}}"/>
+											value="{{getValue(row,column.name)}}"/>
 									</template>
 									<template is="dom-if" if="{{isEqual(column.type, 'date')}}">
 										<input type="date"
 											required?="{{column.required}}"
 											on-blur="save"
-											value$="{{getValue(row,column.name)}}"/>
+											value="{{getValue(row,column.name)}}"/>
 									</template>
 									<template is="dom-if" if="{{isEqual(column.type, 'time')}}">
 										<input type="time"
 											required?="{{column.required}}"
 											on-blur="save"
-											value$="{{getValue(row,column.name)}}"/>
+											value="{{getValue(row,column.name)}}"/>
 									</template>
 									<template is="dom-if" if="{{isEqual(column.type, 'datetime')}}">
 										<input type="datetime"
 											required?="{{column.required}}"
 											on-blur="save"
-											value$="{{getValue(row,column.name)}}"/>
+											value="{{getValue(row,column.name)}}"/>
 									</template>
 									<template is="dom-if" if="{{isEqual(column.type, 'text')}}">
 										<textarea
