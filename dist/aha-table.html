@@ -701,7 +701,7 @@
 			return ['aha-', name, '-th'].join('') + (sortable ? ' sortable' : '');
 		},
 		getSortingClass: function(column, sortingColumn, descending) {
-			var classList = ['sorting']
+			var classList = ['sorting'];
 			if (sortingColumn === column.name) {
 				classList.push(descending ? 'arrow-down' : 'arrow-up');
 			}
@@ -925,6 +925,11 @@
 						};
 					}, this)
 					.sort(function(a, b) {
+							if(isNaN(a.value) && a.value.indexOf("data-sort=") && a.value.indexOf("data-sort=") > -1){
+								return this.descending
+										? (Number(a.value.split('data-sort="')[1].split('"')[0]) < Number(b.value.split('data-sort="')[1].split('"')[0]) ? 1 : -1)
+										: (Number(a.value.split('data-sort="')[1].split('"')[0]) > Number(b.value.split('data-sort="')[1].split('"')[0]) ? 1 : -1);
+							}
 						return this.descending
 						? (a.value < b.value ? 1 : -1)
 						: (a.value > b.value ? 1 : -1);
@@ -1142,7 +1147,6 @@
 	});
 </script>
 
-
 <!--
 /**
  * @module aha-column
@@ -1231,9 +1235,6 @@
 		}
 	});
 </script>
-
-
-
 
 <!--
 /**
